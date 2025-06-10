@@ -31,7 +31,7 @@ export class JogosDigitais extends Jogos {
         return true;
     }
 
-    public visualizarJogoDigital(): void{
+    public visualizarJogoD(): void{
         super.visualizarJogo();
         console.log(`Cartão Presente: R$${this._cartao_presente}`);
     }

@@ -17,9 +17,9 @@ export class JogosFisicos extends Jogos {
         this._quantidade_discos = this.quantidade_discos;
     }
 
-    public visualizarJogoFisico(): void{
+    public visualizarJogo(): void{
         super.visualizarJogo();
-        console.log(`Quantidade de discos: R$${this._quantidade_discos}`);
+        console.log(`Quantidade de discos: ${this._quantidade_discos}`);
 }
 }
 

@@ -57,7 +57,7 @@ export function main() {
                 console.log("\nSelecione o método de pagamento: ");
                 pagamento = readlinesync.keyInSelect(tipos_pagamento, "", {cancel: false}) + 1;
                 jogos.adicionarJogo
-                (new JogosFisicos(jogos.gerarId(), titulo, preco, genero, plataforma, descricao, anodelancamento, quantidade_discos, pagamento, 1));
+                (new JogosFisicos(jogos.gerarId(), titulo, preco, genero, plataforma, descricao, anodelancamento, 1, pagamento, quantidade_discos));
                 keyPress();
                 break;
             case 2:
