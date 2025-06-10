@@ -130,6 +130,10 @@ export function main() {
                 break;
             case 5:
                 console.log("\n\nOpção Selecionada: Apagar Jogo\n\n");
+                console.log("Digite o ID do Jogo que deseja apagar: ");
+                let idApagar = readlinesync.questionInt("");
+                jogos.apagarJogo(idApagar);
+                keyPress();
                 break;
             default:
                 console.log("\nOpção Invalida!\n");

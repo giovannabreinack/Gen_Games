@@ -34,7 +34,13 @@ export class JogosController implements JogosRepository {
         }
     }
     apagarJogo(id: number): void {
-        throw new Error("Method not implemented.");
+        let buscaJogo = this.buscarNoArray(id);
+        if (buscaJogo != null) {
+            this.listaJogos.splice(this.listaJogos.indexOf(buscaJogo), 1);
+            console.log(`Jogo com ID ${id} apagado com sucesso!`);
+        } else {
+            console.log(`Jogo com ID ${id} não encontrado para apagar.`);
+        }
     }
 
     gerarId(): number {
