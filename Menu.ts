@@ -36,7 +36,7 @@ export function main() {
 
         switch(opcao) {
             case 1:
-                console.log("\n\nComprar Jogo\n\n");
+                console.log("\n\nOpção Selecionada: Comprar Jogo\n\n");
                 console.log("Digite o Titulo do Jogo: ");
                 titulo = readlinesync.question("");
                 console.log("Digite o Preço do Jogo: ");
@@ -73,21 +73,63 @@ export function main() {
                 }
                 break;
             case 2:
-                console.log("\n\nListar Jogos\n\n");
+                console.log("\n\nOpção Selecionada: Listar Jogos\n\n");
                 jogos.listarJogos();
                 keyPress();
                 break;
             case 3:
-                console.log("\n\nBuscar Jogo por ID\n\n");
+                console.log("\n\nOpção Selecionada: Buscar Jogo por ID\n\n");
                 console.log("Digite o ID do Jogo: ");
                 let id = readlinesync.questionInt("");
                 jogos.buscarJogoPorId(id);
                 break;
             case 4:
-                console.log("\n\nAtualizar Jogo\n\n");
+                console.log("\n\nOpção Selecionada: Atualizar Jogo\n\n");
+                console.log("Digite o ID do Jogo que deseja atualizar: ");
+                let idAtualizar = readlinesync.questionInt("");
+                let jogoAtualizar = jogos.buscarNoArray(idAtualizar);
+                if (jogoAtualizar != null) {
+                    console.log("Digite o novo Titulo do Jogo: ");
+                    titulo = readlinesync.question("");
+                    console.log("Digite o novo Preço do Jogo: ");
+                    preco = readlinesync.questionFloat("");
+                    console.log("Digite o novo Genero do Jogo: ");
+                    genero = readlinesync.question("");
+                    console.log("Digite a nova Plataforma do Jogo: ");
+                    plataforma = readlinesync.question("");
+                    console.log("Digite a nova Descrição do Jogo: ");
+                    descricao = readlinesync.question("");
+                    console.log("Digite o novo Ano de Lançamento do Jogo: ");
+                    anodelancamento = readlinesync.questionInt("");
+                    console.log("Digite o novo Tipo de Jogo: ");
+                    console.log("1 - Jogo Físico");
+                    console.log("2 - Jogo Digital");
+                    tipo = readlinesync.questionInt("");
+                    switch(tipo){
+                        case 1:
+                            console.log("Digite a nova quantidade de discos: ");
+                            quantidade_discos = readlinesync.questionInt("");
+                            console.log("Digite o novo método de pagamento (ex: 1 para cartão, 2 para dinheiro): ");
+                            pagamento = readlinesync.questionInt("");
+                            jogos.atualizarJogo
+                            (new JogosFisicos(jogoAtualizar.id, titulo, preco, genero, plataforma, descricao, anodelancamento, quantidade_discos, pagamento, tipo));
+                            break;
+                        case 2:
+                            console.log("Digite o novo valor do Cartão Presente: ");
+                            cartao_presente = readlinesync.questionInt("");
+                            console.log("Digite o novo método de pagamento (ex: 1 para cartão, 2 para dinheiro): ");
+                            pagamento = readlinesync.questionInt("");
+                            jogos.atualizarJogo
+                            (new JogosDigitais(jogoAtualizar.id, titulo, preco, genero, plataforma, descricao, anodelancamento, cartao_presente, pagamento, tipo));
+                            break;
+                    }
+                } else {
+                    console.log(`Jogo com ID ${idAtualizar} não encontrado para atualização.`);
+                }
+                keyPress();
                 break;
             case 5:
-                console.log("\n\nApagar Jogo\n\n");
+                console.log("\n\nOpção Selecionada: Apagar Jogo\n\n");
                 break;
             default:
                 console.log("\nOpção Invalida!\n");
