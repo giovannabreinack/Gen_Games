@@ -109,7 +109,6 @@ export abstract class Jogos {
         console.log("Descrição: " + this._descricao);
         console.log("Ano de Lançamento: " + this._anodelancamento);
         console.log("Pagamento: " + this._pagamento);
-        console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
     }
 
 }

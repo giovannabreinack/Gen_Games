@@ -8,6 +8,7 @@ import { JogosDigitais } from "./src/model/JogosDigitais";
 export function main() {
 
     let jogos: JogosController = new JogosController();
+    
 
     let opcao, pagamento, tipo, cartao_presente, anodelancamento, preco, quantidade_discos: number;
     let titulo, genero, plataforma, descricao: string;
@@ -24,7 +25,7 @@ export function main() {
         console.log("                3 - Buscar Jogo por ID                  ");
         console.log("                4 - Atualizar Jogo                      ");
         console.log("                5 - Apagar Jogo                         ");
-        console.log("                6 - Usar Cartão Presente                ");                 
+        console.log("                6 - Comprar Com Cartão Presente                ");                 
         console.log("                7 - Sair                                ");
         console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         console.log("Entre com a opção desejada: ");
@@ -108,18 +109,30 @@ export function main() {
                 keyPress();
                 break;
             case 6:
-                console.log("\n\nOpção Selecionada: Usar Cartão Presente\n\n");
-                console.log("Digite o ID do jogo:");
-                const idJogo = readlinesync.questionInt("");
-                const jogo = jogos.buscarNoArray(idJogo);
-                if (jogo && jogo instanceof JogosDigitais) {
-                    try {
-                        jogo.usarCartao();
-                    } catch (error) {
-                        console.log("Erro ao usar cartão: " + (error as Error).message);
-                    }
+                console.log("\n\nOpção Selecionada: Comprar Com Cartão Presente\n\n");
+                console.log("Digite o Titulo do Jogo: ");
+                titulo = readlinesync.question("");
+                console.log("Digite o Preço do Jogo: ");
+                preco = readlinesync.questionFloat("");
+                console.log("Digite o Genero do Jogo: ");
+                genero = readlinesync.question("");
+                console.log("Digite a Plataforma do Jogo: ");
+                plataforma = readlinesync.question("");
+                console.log("Digite a Descrição do Jogo: ");
+                descricao = readlinesync.question("");
+                console.log("Digite o Ano de Lançamento do Jogo: ");
+                anodelancamento = readlinesync.questionInt("");
+                console.log("Digite o valor do Cartão Presente: ");
+                cartao_presente = readlinesync.questionFloat("");
+                if(cartao_presente < preco){
+                    console.log("\nSaldo do cartão presente insuficiente para a compra.\n");
+                    keyPress();
+                    break;
                 } else {
-                    console.log("Jogo não encontrado ou ID inválido.");
+                jogos.adicionarJogo
+                (new JogosDigitais(jogos.gerarId(), titulo, preco, genero, plataforma, descricao, anodelancamento, 0, cartao_presente, 2));
+                console.log("\nJogo comprado com sucesso!\n");
+                console.log("Saldo restante no cartão presente: R$" + (cartao_presente - preco).toFixed(2));
                 }
                 keyPress();
                 break;

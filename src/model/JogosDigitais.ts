@@ -19,19 +19,7 @@ export class JogosDigitais extends Jogos {
         this._cartao_presente = cartao_presente;
     }
 
-    public usarCartao(): boolean {
-        if (this._cartao_presente <= 0) {
-            throw new Error("Saldo do cartão presente inválido.");
-        }
-        if (this._cartao_presente < this.preco) {
-            throw new Error("Saldo insuficiente no cartão presente.");
-        }
-        this._cartao_presente -= this.preco;
-        console.log(`Compra realizada! Saldo restante: R$${this._cartao_presente}`);
-        return true;
-    }
-
-    public visualizarJogoD(): void{
+    public visualizarJogo(): void{
         super.visualizarJogo();
         console.log(`Cartão Presente: R$${this._cartao_presente}`);
     }
