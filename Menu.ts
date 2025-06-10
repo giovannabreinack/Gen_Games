@@ -7,7 +7,9 @@ export function main() {
 
     let jogos: JogosController = new JogosController();
 
-    let opcao: number;
+    let opcao, pagamento, tipo, cartao_presente, anodelancamento, preco, quantidade_discos: number;
+    let titulo, genero, plataforma, descricao: string;
+    const tipos = ["Jogo Físico", "Jogo Digital"];
 
     while (true) {
         console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
@@ -32,6 +34,23 @@ export function main() {
         switch(opcao) {
             case 1:
                 console.log("\n\nComprar Jogo\n\n");
+                console.log("Digite o Titulo do Jogo: ");
+                titulo = readlinesync.question("");
+                console.log("Digite o Preço do Jogo: ");
+                preco = readlinesync.questionFloat(""); 
+                console.log("Digite o Genero do Jogo: ");
+                genero = readlinesync.question("");
+                console.log("Digite a Plataforma do Jogo: ");
+                plataforma = readlinesync.question("");
+                console.log("Digite a Descrição do Jogo: ");
+                descricao = readlinesync.question("");
+                console.log("Digite o Ano de Lançamento do Jogo: ");
+                anodelancamento = readlinesync.questionInt("");
+                console.log("Digite o Tipo de Jogo: ");
+          
+                switch(tipo){
+                    case 1:
+                }
                 break;
             case 2:
                 console.log("\n\nListar Jogos\n\n");

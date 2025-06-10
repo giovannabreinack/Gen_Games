@@ -15,13 +15,19 @@ export class JogosController implements JogosRepository {
     }
 }
     adicionarJogo(jogo: Jogos): void {
-        throw new Error("Method not implemented.");
+        this.listaJogos.push(jogo);
+        console.log(`Jogo ${jogo.titulo} adicionado com sucesso!`);
     }
     atualizarJogo(jogo: Jogos): void {
         throw new Error("Method not implemented.");
     }
     apagarJogo(id: number): void {
         throw new Error("Method not implemented.");
+    }
+
+    gerarId(): number {
+        this.numero++;
+        return this.numero;
     }
 
 }
