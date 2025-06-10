@@ -79,6 +79,9 @@ export function main() {
                 break;
             case 3:
                 console.log("\n\nBuscar Jogo por ID\n\n");
+                console.log("Digite o ID do Jogo: ");
+                let id = readlinesync.questionInt("");
+                jogos.buscarJogoPorId(id);
                 break;
             case 4:
                 console.log("\n\nAtualizar Jogo\n\n");
