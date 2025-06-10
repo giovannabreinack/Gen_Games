@@ -2,6 +2,8 @@ import readlinesync = require("readline-sync");
 import { Jogos } from "./src/model/Jogos";
 import { read } from "fs";
 import { JogosController } from "./src/controller/JogosController";
+import { JogosFisicos } from "./src/model/JogosFisicos";
+import { JogosDigitais } from "./src/model/JogosDigitais";
 
 export function main() {
 
@@ -10,6 +12,7 @@ export function main() {
     let opcao, pagamento, tipo, cartao_presente, anodelancamento, preco, quantidade_discos: number;
     let titulo, genero, plataforma, descricao: string;
     const tipos = ["Jogo Físico", "Jogo Digital"];
+    const pagamentos = ["Cartão", "Dinheiro"];
 
     while (true) {
         console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
@@ -46,10 +49,27 @@ export function main() {
                 descricao = readlinesync.question("");
                 console.log("Digite o Ano de Lançamento do Jogo: ");
                 anodelancamento = readlinesync.questionInt("");
-                console.log("Digite o Tipo de Jogo: ");
-          
+                console.log("Digite o Tipo de Jogo: ");    
+                console.log("1 - Jogo Físico");
+                console.log("2 - Jogo Digital");
+                tipo = readlinesync.questionInt(""); 
                 switch(tipo){
                     case 1:
+                        console.log("Digite a quantidade de discos: ");
+                        quantidade_discos = readlinesync.questionInt("");
+                        console.log("Digite o método de pagamento (ex: 1 para cartão, 2 para dinheiro): ");
+                        pagamento = readlinesync.questionInt("");
+                        jogos.adicionarJogo
+                        (new JogosFisicos(jogos.gerarId(), titulo, preco, genero, plataforma, descricao, anodelancamento, quantidade_discos, pagamento, tipo));
+                        break;
+                    case 2:
+                        console.log("Digite o valor do Cartão Presente: ");
+                        cartao_presente = readlinesync.questionInt("");
+                        console.log("Digite o método de pagamento (ex: 1 para cartão, 2 para dinheiro): ");
+                        pagamento = readlinesync.questionInt("");
+                        jogos.adicionarJogo
+                        (new JogosDigitais(jogos.gerarId(), titulo, preco, genero, plataforma, descricao, anodelancamento, cartao_presente, pagamento, tipo));
+                        break;
                 }
                 break;
             case 2:
