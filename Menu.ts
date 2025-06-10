@@ -11,7 +11,7 @@ export function main() {
 
     let opcao, pagamento, tipo, cartao_presente, anodelancamento, preco, quantidade_discos: number;
     let titulo, genero, plataforma, descricao: string;
-    const tipos_pagamento = ["Cartão de Crédito", "Dinheiro"];
+    const tipos_pagamento = ["Cartao de Credito", "Dinheiro"];
     
 
     while (true) {
@@ -24,13 +24,13 @@ export function main() {
         console.log("                3 - Buscar Jogo por ID                  ");
         console.log("                4 - Atualizar Jogo                      ");
         console.log("                5 - Apagar Jogo                         ");
-        console.log("                6 - Sair                                ");
-        console.log("                7 - Usar Cartão Presente               ");
+        console.log("                6 - Usar Cartão Presente                ");                  ");
+        console.log("                7 - Sair                                ");
         console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         console.log("Entre com a opção desejada: ");
         opcao = readlinesync.questionInt("");
 
-        if (opcao == 6) {
+        if (opcao == 7) {
             console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
             console.log("\nVolte sempre ao Gen Games!\n");
             sobre();
@@ -91,8 +91,8 @@ export function main() {
                     anodelancamento = readlinesync.questionInt("");
                     console.log("Digite a nova Quantidade de Discos: ");
                     quantidade_discos = readlinesync.questionInt("");
-                    console.log("Digite o novo método de pagamento (ex: 1 para cartão, 2 para dinheiro): ");
-                    pagamento = readlinesync.questionInt("");
+                    console.log("Digite o novo método de pagamento: ");
+                    pagamento = readlinesync.keyInSelect(tipos_pagamento, "", {cancel: false}) + 1;
                     jogos.atualizarJogo(new JogosFisicos(idAtualizar, titulo, preco, genero, plataforma, descricao, anodelancamento, quantidade_discos, pagamento, 1));
                 } else {
                     console.log("Jogo com ID " + idAtualizar + " não encontrado.");
@@ -107,7 +107,7 @@ export function main() {
                 jogos.apagarJogo(idApagar);
                 keyPress();
                 break;
-            case 7:
+            case 6:
                 console.log("\n\nOpção Selecionada: Usar Cartão Presente\n\n");
                 console.log("Digite o ID do jogo:");
                 const idJogo = readlinesync.questionInt("");
