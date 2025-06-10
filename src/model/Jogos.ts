@@ -95,15 +95,7 @@ export abstract class Jogos {
         this._tipo = tipo;
     }
 
-    public comprar(preco: number) : boolean{
-    if (this._pagamento < preco) {
-    console.log("\nSaldo Insuficiente para comprar o jogo!");
-    return false;
-    }
-
-    this._pagamento = this._pagamento - preco;
-    return true;
-    }
+    
     public visualizarJogo() : void {
         console.log("\n\n::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         console.log("Dados do Jogo: ");
