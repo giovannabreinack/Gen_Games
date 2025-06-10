@@ -11,6 +11,7 @@ export function main() {
 
     let opcao, pagamento, tipo, cartao_presente, anodelancamento, preco, quantidade_discos: number;
     let titulo, genero, plataforma, descricao: string;
+    const tipos_pagamento = ["Cartão de Crédito", "Dinheiro"];
     
 
     while (true) {
@@ -53,8 +54,8 @@ export function main() {
                 anodelancamento = readlinesync.questionInt("");
                 console.log("Digite a Quantidade de Discos: ");
                 quantidade_discos = readlinesync.questionInt("");
-                console.log("Digite o método de pagamento (ex: 1 para cartão, 2 para dinheiro): ");
-                pagamento = readlinesync.questionInt("");
+                console.log("\nSelecione o método de pagamento: ");
+                pagamento = readlinesync.keyInSelect(tipos_pagamento, "", {cancel: false}) + 1;
                 jogos.adicionarJogo
                 (new JogosFisicos(jogos.gerarId(), titulo, preco, genero, plataforma, descricao, anodelancamento, quantidade_discos, pagamento, 1));
                 keyPress();
