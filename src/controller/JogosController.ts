@@ -6,14 +6,15 @@ export class JogosController implements JogosRepository {
 
     numero: number = 0;
 
-    buscarJogoPorId(id: number): Jogos | null {
-        for (let jogo of this.listaJogos) {
-            if (jogo.id === id) 
-                return jogo;
+    buscarJogoPorId(id: number): void {
+        let buscaJogo = this.buscarNoArray(id);
+        if (buscaJogo != null){
+            buscaJogo.visualizarJogo();
+        } else {
+            console.log(`Jogo com ID ${id} não encontrado.`);
         }
-                return null;
         }
-        
+
     listarJogos(): void {
         for (let jogo of this.listaJogos) {
             jogo.visualizarJogo();
@@ -33,6 +34,15 @@ export class JogosController implements JogosRepository {
     gerarId(): number {
         this.numero++;
         return this.numero;
+    }
+
+    public buscarNoArray(id: number): Jogos | null {
+        for (let jogo of this.listaJogos) {
+            if (jogo.id === id) {
+                return jogo;
+            }
+        }
+        return null;
     }
 
 }

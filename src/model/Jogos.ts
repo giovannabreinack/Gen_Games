@@ -119,4 +119,5 @@ export abstract class Jogos {
         console.log("Pagamento: " + this._pagamento);
         console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
     }
+
 }
