@@ -24,7 +24,7 @@ export function main() {
         console.log("                3 - Buscar Jogo por ID                  ");
         console.log("                4 - Atualizar Jogo                      ");
         console.log("                5 - Apagar Jogo                         ");
-        console.log("                6 - Usar Cartão Presente                ");                  ");
+        console.log("                6 - Usar Cartão Presente                ");                 
         console.log("                7 - Sair                                ");
         console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         console.log("Entre com a opção desejada: ");
