@@ -6,9 +6,14 @@ export class JogosController implements JogosRepository {
 
     numero: number = 0;
 
-    buscarJogoPorTitulo(titulo: string): void {
-        throw new Error("Method not implemented.");
-    }
+    buscarJogoPorId(id: number): Jogos | null {
+        for (let jogo of this.listaJogos) {
+            if (jogo.id === id) 
+                return jogo;
+        }
+                return null;
+        }
+        
     listarJogos(): void {
         for (let jogo of this.listaJogos) {
             jogo.visualizarJogo();

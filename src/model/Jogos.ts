@@ -108,6 +108,7 @@ export abstract class Jogos {
         console.log("\n\n::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         console.log("Dados do Jogo: ");
         console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+        console.log("ID: " + this._id);
         console.log("Titulo: " + this._titulo);
         console.log("Tipo: " + this._tipo);
         console.log("Preço: " + this._preco);
@@ -115,6 +116,7 @@ export abstract class Jogos {
         console.log("Plataforma: " + this._plataforma);
         console.log("Descrição: " + this._descricao);
         console.log("Ano de Lançamento: " + this._anodelancamento);
+        console.log("Pagamento: " + this._pagamento);
         console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
     }
 }
