@@ -1,8 +1,11 @@
 import readlinesync = require("readline-sync");
 import { Jogos } from "./src/model/Jogos";
 import { read } from "fs";
+import { JogosController } from "./src/controller/JogosController";
 
 export function main() {
+
+    let jogos: JogosController = new JogosController();
 
     let opcao: number;
 
@@ -32,6 +35,8 @@ export function main() {
                 break;
             case 2:
                 console.log("\n\nListar Jogos\n\n");
+                jogos.listarJogos();
+                keyPress();
                 break;
             case 3:
                 console.log("\n\nBuscar Jogo por ID\n\n");
