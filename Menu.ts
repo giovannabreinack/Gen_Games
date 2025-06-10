@@ -14,9 +14,10 @@ export function main() {
     
 
     while (true) {
-        console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
-        console.log("                      GEN GAMES                         ")
-        console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+        console.log("\n         Bem-vindo ao Gen Games - O mundo dos jogos!    ");
+        console.log("\n::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+        console.log("                      GEN GAMES                         ");
+        console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         console.log("                1 - Adicionar Jogo                      ");
         console.log("                2 - Listar Jogos                        ");
         console.log("                3 - Buscar Jogo por ID                  ");
@@ -28,7 +29,8 @@ export function main() {
         opcao = readlinesync.questionInt("");
 
         if (opcao == 6) {
-            console.log("\nGen Games - O mundo dos jogos");
+            console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+            console.log("\nVolte sempre ao Gen Games!\n");
             sobre();
             process.exit(0);
         }
