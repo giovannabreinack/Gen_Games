@@ -5,19 +5,17 @@ export abstract class Jogos {
     private _preco: number;
     private _genero: string;
     private _plataforma: string;
-    private _descricao: string;
     private _anodelancamento: number;
     private _pagamento: number;
     private _tipo: number;
 
     constructor(id: number, titulo: string, preco: number, genero: string,
-        plataforma: string, descricao: string, anodelancamento: number, pagamento: number, tipo: number) {
+        plataforma: string,  anodelancamento: number, pagamento: number, tipo: number) {
             this._id = id;
             this._titulo = titulo;
             this._preco = preco;
             this._genero = genero;
             this._plataforma = plataforma;
-            this._descricao = descricao;
             this._anodelancamento = anodelancamento;
             this._pagamento = pagamento;
             this._tipo = tipo;
@@ -63,14 +61,6 @@ export abstract class Jogos {
         this._plataforma = plataforma;
     }
 
-    public get descricao(){
-        return this._descricao;
-    }
-
-    public set descricao(descricao: string){
-        this._descricao = descricao;
-    }
-
     public get anodelancamento(){
         return this._anodelancamento;
     }
@@ -106,7 +96,6 @@ export abstract class Jogos {
         console.log("Preço: " + this._preco);
         console.log("Gênero: " + this._genero);
         console.log("Plataforma: " + this._plataforma);
-        console.log("Descrição: " + this._descricao);
         console.log("Ano de Lançamento: " + this._anodelancamento);
         console.log("Pagamento: " + this._pagamento);
     }

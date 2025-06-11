@@ -4,9 +4,9 @@ export class JogosFisicos extends Jogos {
     private _quantidade_discos: number;
 
     constructor(id: number, titulo: string, preco: number,
-        genero: string, plataforma: string, descricao: string,
+        genero: string, plataforma: string, 
         anodelancamento: number, tipo:number, pagamento: number, quantidade_discos: number){
-    super(id, titulo, preco, genero, plataforma, descricao, anodelancamento, pagamento, tipo);
+    super(id, titulo, preco, genero, plataforma, anodelancamento, pagamento, tipo);
     this._quantidade_discos = quantidade_discos;
 }
     public get quantidade_discos(){
@@ -19,7 +19,7 @@ export class JogosFisicos extends Jogos {
 
     public visualizarJogo(): void{
         super.visualizarJogo();
-        console.log(`Quantidade de discos: ${this._quantidade_discos}`);
+        console.log(`Quantidade: ${this._quantidade_discos}`);
 }
 }
 

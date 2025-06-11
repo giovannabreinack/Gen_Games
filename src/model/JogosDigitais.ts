@@ -5,9 +5,9 @@ export class JogosDigitais extends Jogos {
     private _cartao_presente: number;
 
     constructor(id: number, titulo: string, preco: number,
-        genero: string, plataforma: string, descricao: string,
+        genero: string, plataforma: string, 
         anodelancamento: number, pagamento: number, cartao_presente: number, tipo: number) {
-        super(id, titulo, preco, genero, plataforma, descricao, anodelancamento, pagamento, tipo);
+        super(id, titulo, preco, genero, plataforma, anodelancamento, pagamento, tipo);
         this._cartao_presente = cartao_presente;
         }
 

@@ -11,8 +11,9 @@ export function main() {
     
 
     let opcao, pagamento, tipo, cartao_presente, anodelancamento, preco, quantidade_discos: number;
-    let titulo, genero, plataforma, descricao: string;
-    const tipos_pagamento = ["Cartao de Credito", "Dinheiro"];
+    let titulo, genero, plataforma: string;
+    const tipos_pagamento = ["Cartao de Credito", "PIX", "Cartao de Debito", "Cartao Presente"];
+    const tipos_jogos = ["Jogo Fisico", "Jogo Digital"];
     
 
     while (true) {
@@ -25,7 +26,7 @@ export function main() {
         console.log("                3 - Buscar Jogo por ID                  ");
         console.log("                4 - Atualizar Jogo                      ");
         console.log("                5 - Apagar Jogo                         ");
-        console.log("                6 - Comprar Com Cartão Presente                ");                 
+        console.log("                6 - Comprar Com Cartão Presente          ");                 
         console.log("                7 - Sair                                ");
         console.log("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         console.log("Entre com a opção desejada: ");
@@ -41,24 +42,100 @@ export function main() {
         switch(opcao) {
             case 1:
                 console.log("\n\nOpção Selecionada: Comprar Jogo\n\n");
-                console.log("Digite o Titulo do Jogo: ");
-                titulo = readlinesync.question("");
-                console.log("Digite o Preço do Jogo: ");
-                preco = readlinesync.questionFloat(""); 
-                console.log("Digite o Genero do Jogo: ");
-                genero = readlinesync.question("");
-                console.log("Digite a Plataforma do Jogo: ");
-                plataforma = readlinesync.question("");
-                console.log("Digite a Descrição do Jogo: ");
-                descricao = readlinesync.question("");
-                console.log("Digite o Ano de Lançamento do Jogo: ");
-                anodelancamento = readlinesync.questionInt("");
-                console.log("Digite a Quantidade de Discos: ");
-                quantidade_discos = readlinesync.questionInt("");
-                console.log("\nSelecione o método de pagamento: ");
-                pagamento = readlinesync.keyInSelect(tipos_pagamento, "", {cancel: false}) + 1;
-                jogos.adicionarJogo
-                (new JogosFisicos(jogos.gerarId(), titulo, preco, genero, plataforma, descricao, anodelancamento, 1, pagamento, quantidade_discos));
+                console.log("Selecione o tipo de jogo: ");
+                tipo = readlinesync.keyInSelect(tipos_jogos, "", {cancel: false}) + 1;
+                switch (tipo) {
+                    case 1:
+                        console.log("\nVocê selecionou Jogo Fisico.\n");
+                        console.log("Digite o Titulo do Jogo: ");
+                        titulo = readlinesync.question("");
+                        console.log("Digite o Preço do Jogo: ");
+                        preco = readlinesync.questionFloat(""); 
+                        console.log("Digite o Genero do Jogo: ");
+                        genero = readlinesync.question("");
+                        console.log("Digite a Plataforma do Jogo: ");
+                        plataforma = readlinesync.question("");
+                        console.log("Digite o Ano de Lançamento do Jogo: ");
+                        anodelancamento = readlinesync.questionInt("");
+                        console.log("Digite a Quantidade de Discos: ");
+                        quantidade_discos = readlinesync.questionInt("");
+                        console.log("\nSelecione o método de pagamento: ");
+                        pagamento = readlinesync.keyInSelect(tipos_pagamento, "", {cancel: false}) + 1;
+                        switch (pagamento) {
+                            case 1:
+                                console.log("\nVocê selecionou Cartão de Crédito.\n");
+                                jogos.adicionarJogo
+                                (new JogosFisicos(jogos.gerarId(), titulo, preco, genero, plataforma, anodelancamento, tipo, pagamento, quantidade_discos));
+                                break;
+                            case 2:
+                                console.log("\nVocê selecionou PIX.\n");
+                                jogos.adicionarJogo
+                                (new JogosFisicos(jogos.gerarId(), titulo, preco, genero, plataforma, anodelancamento, tipo, pagamento, quantidade_discos));
+                                break;
+                            case 3:
+                                console.log("\nVocê selecionou Cartão de Debito.\n");
+                                jogos.adicionarJogo
+                                (new JogosFisicos(jogos.gerarId(), titulo, preco, genero, plataforma, anodelancamento, tipo, pagamento, quantidade_discos));
+                                break;
+                            default:
+                                console.log("\nOpção de pagamento inválida.\n");
+                                keyPress();
+                                break;  
+                }
+            break;
+                case 2:
+                    console.log("\nVocê selecionou Jogo Digital.\n");
+                    console.log("Digite o Titulo do Jogo: ");
+                    titulo = readlinesync.question("");
+                    console.log("Digite o Preço do Jogo: ");
+                    preco = readlinesync.questionFloat("");
+                    console.log("Digite o Genero do Jogo: ");
+                    genero = readlinesync.question("");
+                    console.log("Digite a Plataforma do Jogo: ");
+                    plataforma = readlinesync.question("");
+                    console.log("Digite o Ano de Lançamento do Jogo: ");
+                    anodelancamento = readlinesync.questionInt("");
+                    console.log("Digite o método de pagamento: ");
+                    pagamento = readlinesync.keyInSelect(tipos_pagamento, "", {cancel: false}) + 1;
+                switch (pagamento) {
+                    case 1:
+                        console.log("\nVocê selecionou Cartão de Crédito.\n");
+                        jogos.adicionarJogo
+                        (new JogosDigitais(jogos.gerarId(), titulo, preco, genero, plataforma, anodelancamento, pagamento, 0, tipo));
+                        break;
+                    case 2:
+                        console.log("\nVocê selecionou PIX.\n");
+                        jogos.adicionarJogo
+                        (new JogosDigitais(jogos.gerarId(), titulo, preco, genero, plataforma, anodelancamento, pagamento, 0, tipo));
+                        break;
+                    case 3:
+                        console.log("\nVocê selecionou Cartão de Debito.\n");
+                        jogos.adicionarJogo
+                        (new JogosDigitais(jogos.gerarId(), titulo, preco, genero, plataforma, anodelancamento, pagamento, 0, tipo));
+                        break;
+                    case 4:
+                        console.log("\nVocê selecionou Cartão Presente.\n");
+                        console.log("Digite o valor do Cartão Presente: ");
+                        cartao_presente = readlinesync.questionFloat("");
+                        if(cartao_presente < preco){
+                            console.log("\nSaldo do cartão presente insuficiente para a compra.\n");
+                            keyPress();
+                            break;
+                        } else {
+                            jogos.adicionarJogo
+                            (new JogosDigitais(jogos.gerarId(), titulo, preco, genero, plataforma, anodelancamento, pagamento, cartao_presente, tipo));
+                            console.log("\nJogo comprado com sucesso!\n");
+                            console.log("Saldo restante no cartão presente: R$" + (cartao_presente - preco).toFixed(2));
+                        }
+
+                    default:
+                        console.log("\nOpção de pagamento inválida.\n");
+                        keyPress();
+                        break;  
+                }    
+                    break;
+                }
+
                 keyPress();
                 break;
             case 2:
@@ -86,15 +163,13 @@ export function main() {
                     genero = readlinesync.question("");
                     console.log("Digite a nova Plataforma do Jogo: ");
                     plataforma = readlinesync.question("");
-                    console.log("Digite a nova Descrição do Jogo: ");
-                    descricao = readlinesync.question("");
                     console.log("Digite o novo Ano de Lançamento do Jogo: ");
                     anodelancamento = readlinesync.questionInt("");
                     console.log("Digite a nova Quantidade de Discos: ");
                     quantidade_discos = readlinesync.questionInt("");
                     console.log("Digite o novo método de pagamento: ");
                     pagamento = readlinesync.keyInSelect(tipos_pagamento, "", {cancel: false}) + 1;
-                    jogos.atualizarJogo(new JogosFisicos(idAtualizar, titulo, preco, genero, plataforma, descricao, anodelancamento, quantidade_discos, pagamento, 1));
+                    jogos.atualizarJogo(new JogosFisicos(idAtualizar, titulo, preco, genero, plataforma, anodelancamento, quantidade_discos, pagamento, 1));
                 } else {
                     console.log("Jogo com ID " + idAtualizar + " não encontrado.");
                 }
@@ -118,8 +193,6 @@ export function main() {
                 genero = readlinesync.question("");
                 console.log("Digite a Plataforma do Jogo: ");
                 plataforma = readlinesync.question("");
-                console.log("Digite a Descrição do Jogo: ");
-                descricao = readlinesync.question("");
                 console.log("Digite o Ano de Lançamento do Jogo: ");
                 anodelancamento = readlinesync.questionInt("");
                 console.log("Digite o valor do Cartão Presente: ");
@@ -130,7 +203,7 @@ export function main() {
                     break;
                 } else {
                 jogos.adicionarJogo
-                (new JogosDigitais(jogos.gerarId(), titulo, preco, genero, plataforma, descricao, anodelancamento, 0, cartao_presente, 2));
+                (new JogosDigitais(jogos.gerarId(), titulo, preco, genero, plataforma, anodelancamento, 0, cartao_presente, 2));
                 console.log("\nJogo comprado com sucesso!\n");
                 console.log("Saldo restante no cartão presente: R$" + (cartao_presente - preco).toFixed(2));
                 }
