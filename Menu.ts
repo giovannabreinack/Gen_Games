@@ -119,15 +119,12 @@ export function main() {
                         cartao_presente = readlinesync.questionFloat("");
                         if(cartao_presente < preco){
                             console.log("\nSaldo do cartão presente insuficiente para a compra.\n");
-                            keyPress();
-                            break;
                         } else {
                             jogos.adicionarJogo
                             (new JogosDigitais(jogos.gerarId(), titulo, preco, genero, plataforma, anodelancamento, pagamento, cartao_presente, tipo));
                             console.log("Saldo restante no cartão presente: R$" + (cartao_presente - preco).toFixed(2));
                         }
                         break;
-
                     default:
                         console.log("\nOpção de pagamento inválida.\n");
                         keyPress();
@@ -223,7 +220,6 @@ export function main() {
                                     cartao_presente = readlinesync.questionFloat("");
                                     if(cartao_presente < preco){
                                         console.log("\nSaldo do cartão presente insuficiente para a compra.\n");
-                                        keyPress();
                                     } else {
                                         jogos.atualizarJogo(new JogosDigitais(idAtualizar, titulo, preco, genero, plataforma, anodelancamento, pagamento, cartao_presente, tipo));
                                         console.log("Saldo restante no cartão presente: R$" + (cartao_presente - preco).toFixed(2));
