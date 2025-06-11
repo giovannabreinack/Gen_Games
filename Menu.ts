@@ -12,7 +12,8 @@ export function main() {
 
     let opcao, pagamento, tipo, cartao_presente, anodelancamento, preco, quantidade_discos: number;
     let titulo, genero, plataforma: string;
-    const tipos_pagamento = ["Cartao de Credito", "PIX", "Cartao de Debito", "Cartao Presente"];
+    const tipos_pagamento_digital = ["Cartao de Credito", "PIX", "Cartao de Debito", "Cartao Presente"];
+    const tipos_pagamento_fisico = ["Cartao de Credito", "PIX", "Cartao de Debito"];
     const tipos_jogos = ["Jogo Fisico", "Jogo Digital"];
     
 
@@ -59,7 +60,7 @@ export function main() {
                         console.log("Digite a Quantidade de Discos: ");
                         quantidade_discos = readlinesync.questionInt("");
                         console.log("\nSelecione o método de pagamento: ");
-                        pagamento = readlinesync.keyInSelect(tipos_pagamento, "", {cancel: false}) + 1;
+                        pagamento = readlinesync.keyInSelect(tipos_pagamento_fisico, "", {cancel: false}) + 1;
                         switch (pagamento) {
                             case 1:
                                 console.log("\nVocê selecionou Cartão de Crédito.\n");
@@ -95,7 +96,7 @@ export function main() {
                     console.log("Digite o Ano de Lançamento do Jogo: ");
                     anodelancamento = readlinesync.questionInt("");
                     console.log("Digite o método de pagamento: ");
-                    pagamento = readlinesync.keyInSelect(tipos_pagamento, "", {cancel: false}) + 1;
+                    pagamento = readlinesync.keyInSelect(tipos_pagamento_digital, "", {cancel: false}) + 1;
                 switch (pagamento) {
                     case 1:
                         console.log("\nVocê selecionou Cartão de Crédito.\n");
@@ -123,9 +124,9 @@ export function main() {
                         } else {
                             jogos.adicionarJogo
                             (new JogosDigitais(jogos.gerarId(), titulo, preco, genero, plataforma, anodelancamento, pagamento, cartao_presente, tipo));
-                            console.log("\nJogo comprado com sucesso!\n");
                             console.log("Saldo restante no cartão presente: R$" + (cartao_presente - preco).toFixed(2));
                         }
+                        break;
 
                     default:
                         console.log("\nOpção de pagamento inválida.\n");
@@ -173,7 +174,7 @@ export function main() {
                             console.log("Digite a nova Quantidade de Discos: ");
                             quantidade_discos = readlinesync.questionInt("");
                             console.log("Digite o novo método de pagamento: ");
-                            pagamento = readlinesync.keyInSelect(tipos_pagamento, "", {cancel: false}) + 1;
+                            pagamento = readlinesync.keyInSelect(tipos_pagamento_fisico, "", {cancel: false}) + 1;
                             switch (pagamento) {
                                 case 1:
                                     console.log("\nVocê selecionou Cartão de Crédito.\n");
@@ -188,6 +189,7 @@ export function main() {
                                     jogos.atualizarJogo(new JogosFisicos(idAtualizar, titulo, preco, genero, plataforma, anodelancamento, quantidade_discos, pagamento, tipo));
                                     break;
                             }  
+                            break;
                         case 2:
                             console.log("\nVocê selecionou Jogo Digital.\n");
                             console.log("Digite o novo Titulo do Jogo: ");
@@ -201,7 +203,7 @@ export function main() {
                             console.log("Digite o novo Ano de Lançamento do Jogo: ");
                             anodelancamento = readlinesync.questionInt("");
                             console.log("Digite o novo método de pagamento: ");
-                            pagamento = readlinesync.keyInSelect(tipos_pagamento, "", {cancel: false}) + 1;
+                            pagamento = readlinesync.keyInSelect(tipos_pagamento_digital, "", {cancel: false}) + 1;
                             switch (pagamento) {
                                 case 1:
                                     console.log("\nVocê selecionou Cartão de Crédito.\n");
@@ -222,7 +224,6 @@ export function main() {
                                     if(cartao_presente < preco){
                                         console.log("\nSaldo do cartão presente insuficiente para a compra.\n");
                                         keyPress();
-                                        break;
                                     } else {
                                         jogos.atualizarJogo(new JogosDigitais(idAtualizar, titulo, preco, genero, plataforma, anodelancamento, pagamento, cartao_presente, tipo));
                                         console.log("Saldo restante no cartão presente: R$" + (cartao_presente - preco).toFixed(2));
